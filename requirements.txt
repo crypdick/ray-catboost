@@ -1,4 +1,5 @@
 ray[train]
+pydantic
 catboost
 numpy
 pandas
