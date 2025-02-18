@@ -69,7 +69,6 @@ class CatBoostTrainer(DataParallelTrainer):
         datasets: Datasets to use for training, validation, etc.
         dataset_config: Configuration for dataset ingestion.
         resume_from_checkpoint: Checkpoint to resume training from.
-        metadata: Additional metadata for the training run.
     """
 
     def __init__(
