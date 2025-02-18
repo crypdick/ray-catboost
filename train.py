@@ -25,8 +25,8 @@ X_train, y_train = generate_data(train_size)
 X_val, y_val = generate_data(val_size)
 
 # Convert to Ray Dataset
-train_dataset = ray.data.from_numpy(X_train).add_column(name="label", data=y_train)
-val_dataset = ray.data.from_numpy(X_val).add_column(name="label", data=y_val)
+train_dataset = ray.data.from_numpy(X_train).map_batches(lambda df: df.assign(label=y_train))
+val_dataset = ray.data.from_numpy(X_val).map_batches(lambda df: df.assign(label=y_val))
 
 def train_func(config):
     import catboost
