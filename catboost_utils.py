@@ -33,7 +33,7 @@ class CatBoostConfig(BackendConfig):
 class CatBoostBackend(Backend):
     """Backend for distributed CatBoost training."""
 
-    def on_start(self, worker_group: WorkerGroup, backend_config: CatBoostConfig):
+    def on_start(self, worker_group: WorkerGroup, backend_config: Optional[CatBoostConfig] = None):
         # Get worker IPs for distributed training
         worker_ips = [worker.metadata.node_ip for worker in worker_group.workers]
         worker_addresses = [f"{ip}:0" for ip in worker_ips]
